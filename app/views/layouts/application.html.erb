@@ -35,12 +35,12 @@
               <span>Brands</span>
             </h6>
             <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Brand
-                </a>
-              </li>
+              <% Product.all.pluck(:brand).uniq.each do |b| %>
+                <li class="nav-item">
+                  <%= link_to b, products_path(brand: p), class: 'nav-link' %>
+                </li>
+              <% end %>
+
             </ul>
           </div>
         </nav>
