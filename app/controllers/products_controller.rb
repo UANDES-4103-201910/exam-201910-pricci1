@@ -5,6 +5,18 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    case params[:type]
+    when 'handsets'
+      @products = @products.where(product_type: 'handset')
+    when 'prepaid'
+      @products = @products.where(product_type: 'prepaid')
+    when 'subscription'
+      @products = @products.where(product_type: 'subscription')
+    end
+    unless params[:brand].nil?
+      @products = @products.where(brand: params[:brand].downcase) ## UNSAFE!!
+    end
+
   end
 
   # GET /products/1
