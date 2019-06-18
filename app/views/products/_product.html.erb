@@ -1,0 +1,11 @@
+<div class="card mb-4 shadow-sm">
+  <div class="card-header">
+    <h4 class="my-0 font-weight-normal"><%= product.brand.capitalize %></h4>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title"><%= product.model %></h1>
+    <div><%= product.short_description %></div>
+    <%= link_to 'Details', product_path(product), class: 'btn btn-lg btn-block btn-outline-primary' %>
+    <%= button_to 'Add', '', class: 'btn btn-lg btn-block btn-outline-success'%>
+  </div>
+</div>
