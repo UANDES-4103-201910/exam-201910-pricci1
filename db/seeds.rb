@@ -21,3 +21,11 @@ o1 = Order.create(address: u1.addresses.first, user: u1)
 products.each do |p|
   OrderProduct.create(order: o1, product: p)
 end
+
+Product.create(brand: 'Entel', model: "Unlimited", price: 9900,
+               short_description: 'Not really',
+               long_description: 'good plan, nice', product_type: 'subscription')
+
+Product.create(brand: 'Wom', model: "As you go", price: 3900,
+               short_description: 'Shit signal',
+               long_description: 'no good plan, no nice', product_type: 'prepaid')
