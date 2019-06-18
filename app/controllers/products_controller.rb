@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
       @products = @products.where(product_type: 'subscription')
     end
     unless params[:brand].nil?
-      @products = @products.where(brand: params[:brand].downcase) ## UNSAFE!!
+      @products = @products.where(brand: params[:brand]) ## UNSAFE!!
     end
 
   end

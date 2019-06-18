@@ -37,7 +37,7 @@
             <ul class="nav flex-column mb-2">
               <% Product.all.pluck(:brand).uniq.each do |b| %>
                 <li class="nav-item">
-                  <%= link_to b, products_path(brand: p), class: 'nav-link' %>
+                  <%= link_to "#{b}", products_path(brand: b), class: 'nav-link' %>
                 </li>
               <% end %>
 
