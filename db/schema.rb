@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_140954) do
+ActiveRecord::Schema.define(version: 2019_06_18_142802) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "phone"
@@ -25,14 +25,22 @@ ActiveRecord::Schema.define(version: 2019_06_18_140954) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "billing_address_id"
-    t.integer "shipping_address_id"
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
-    t.index ["shipping_address_id"], name: "index_orders_on_shipping_address_id"
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_140954) do
     t.string "product_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
   end
 
   create_table "users", force: :cascade do |t|
