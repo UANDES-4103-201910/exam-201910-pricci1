@@ -4,6 +4,6 @@ class ShoppingCartsController < ApplicationController
       session[:products] = [] unless session[:products]
       session[:products] << params[:product]
     end
-    redirect_to ''
+    redirect_to request.env['HTTP_REFERER']
   end
 end
