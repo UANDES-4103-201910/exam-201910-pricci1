@@ -3,7 +3,7 @@
 <h3>Currently in your cart:</h3>
 
 <% if session[:products] %>
-  <%= session[:products].each do |p| %>
+  <% session[:products].each do |p| %>
     <div><%= Product.find_by_id(p)&.model %></div>
   <% end %>
 <% end %>
